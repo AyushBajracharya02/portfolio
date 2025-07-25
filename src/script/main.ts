@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-const $ = document.querySelector.bind(document);
+// const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 Element.prototype.$ = Element.prototype.querySelector;
 Element.prototype.$$ = Element.prototype.querySelectorAll;
