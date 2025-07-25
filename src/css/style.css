@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@import "./fonts.css";
+
+@plugin "./plugins/button.ts";
+@plugin "./plugins/form.ts";
+
+@theme {
+    --color-grey: #BBBBBB;
+    --color-dark-1: rgb(17, 17, 17);
+    --color-dark-2: #515151;
+    --color-dark-3: #252525;
+    --color-light-1: rgb(221, 221, 221);
+
+    --shadow-aside: 0px 0px 20px 0px rgba(103, 103, 103, 0.2509803922) inset;
+    --shadow-aside-social: 0px 0px 15px 0px rgba(221, 221, 221, 0.1490196078) inset;
+
+    --blur-0.5xs: 6px;
+
+    --text-6.5xl: 4rem;
+
+    --font-rajdhani: "Rajdhani";
+}
+
+@utility container {
+    @apply mx-auto;
+}
