@@ -6,13 +6,15 @@
 @plugin "./plugins/form.ts";
 
 @theme {
-    --color-grey: #BBBBBB;
-    --color-dark-1: rgb(17, 17, 17);
-    --color-dark-2: #515151;
-    --color-dark-3: #252525;
-    --color-light-1: rgb(221, 221, 221);
+    --color-grey: oklch(0.7921 0 0);
+    --color-dark-1: oklch(0.1776 0 0);
+    --color-dark-2: oklch(0.4349 0 0);
+    --color-dark-3: oklch(0.2645 0 0);
+    --color-dark-4: oklch(0.2134 0 0);
+    --color-dark-5: oklch(0.4532 0 0);
+    --color-light-1: oklch(0.8975 0 0);
 
-    --color-primary: #B00B1E;
+    --color-primary: oklch(0.4806 0.1898 24.89);
 
     --shadow-aside: 0px 0px 20px 0px rgba(103, 103, 103, 0.2509803922) inset;
     --shadow-aside-social: 0px 0px 15px 0px rgba(221, 221, 221, 0.1490196078) inset;
@@ -25,5 +27,5 @@
 }
 
 @utility container {
-    @apply mx-auto;
+    @apply mx-auto px-5;
 }
