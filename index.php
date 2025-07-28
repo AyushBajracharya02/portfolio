@@ -89,7 +89,7 @@ $dotenv->load();
     </button>
   </div>
   <dialog
-    class="fixed top-0 left-auto right-0 h-screen bg-dark-4 z-1 text-white w-full max-w-80 backdrop:bg-dark-5/50 starting:translate-x-full transition-transform duration-500 [.closing]:translate-x-full backdrop:starting:opacity-0 backdrop:transition-opacity backdrop:duration-500 [.closing]:backdrop:opacity-0"
+    class="fixed top-0 left-auto right-0 h-[100dvh] bg-dark-4 z-1 text-white w-full max-w-80 backdrop:bg-dark-5/50 starting:translate-x-full transition-transform duration-500 [.closing]:translate-x-full backdrop:starting:opacity-0 backdrop:transition-opacity backdrop:duration-500 [.closing]:backdrop:opacity-0"
     id="mobile-menu">
     <div class="h-full">
       <div class="h-full pt-12.5 px-10 pb-10 flex flex-col justify-between">
