@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin";
 
-export default plugin(function ({ addUtilities }) {
+export default plugin(function ({ addComponents }) {
     const baseButtonStyles = {
         color: "var(--text-color, inherit)",
         fontSize: "var(--font-size, inherit)",
@@ -53,5 +53,5 @@ export default plugin(function ({ addUtilities }) {
             "background-color": "black",
         },
     };
-    addUtilities(buttons);
+    addComponents(buttons);
 });

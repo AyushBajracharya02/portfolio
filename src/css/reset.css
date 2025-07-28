@@ -1,0 +1,36 @@
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    button,
+    label[for],
+    label:has(input),
+    [type="checkbox"],
+    [type="radio"],
+    summary {
+        @apply cursor-pointer list-none;
+    }
+    dialog {
+        @apply max-h-[unset] max-w-[unset];
+    }
+    [type="number"] {
+        -moz-appearance: textfield;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+    [type="search"]::-webkit-search-decoration,
+    [type="search"]::-webkit-search-cancel-button,
+    [type="search"]::-webkit-search-results-button,
+    [type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+    }
+    address {
+        font-style: normal;
+    }
+    .prose{
+        @apply !max-w-[unset];
+    }
+}

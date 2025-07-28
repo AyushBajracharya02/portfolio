@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin";
 
-export default plugin(function ({ addUtilities }) {
+export default plugin(function ({ addComponents }) {
     const buttons = {
         ".form-label": {
             display: "block",
@@ -38,5 +38,5 @@ export default plugin(function ({ addUtilities }) {
             display: "block",
         },
     };
-    addUtilities(buttons);
+    addComponents(buttons);
 });
