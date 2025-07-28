@@ -35,13 +35,13 @@ if (minWidth1280px.matches) {
 // })
 
 
-$$(".header-link").forEach((link) => {
+$$(".scroll-link").forEach((link) => {
     link.addEventListener("click", function (e) {
         e.preventDefault();
         const target = link.getAttribute("href");
         smoother.scrollTo(target, true, "top top");
-    })
-})
+    });
+});
 
 const mobileMenu = $("#mobile-menu") as HTMLDialogElement;
 
