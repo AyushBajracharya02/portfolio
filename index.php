@@ -19,16 +19,16 @@ $dotenv->load();
   <title>Ayush Bajracharya | Portfolio</title>
 
   <!-- preload fonts -->
-  <!-- <link rel="preload" href="/fonts/rajdhani/Rajdhani-Bold.woff" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Bold.woff2" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Light.woff" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Light.woff2" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Medium.woff" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Medium.woff2" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Regular.woff" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-Regular.woff2" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-SemiBold.woff" as="font" type="font/woff" />
-  <link rel="preload" href="/fonts/rajdhani/Rajdhani-SemiBold.woff2" as="font" type="font/woff" /> -->
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff" as="font" type="font/woff" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Light.woff" as="font" type="font/woff" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Medium.woff" as="font" type="font/woff" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Regular.woff" as="font" type="font/woff" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff" as="font" type="font/woff" crossorigin="anonymous" />
+  <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   <!-- preload fonts -->
 
   <?php if ($_ENV['APP_ENV'] == 'local'): ?>
@@ -43,39 +43,39 @@ $dotenv->load();
 <body class="text-white font-rajdhani bg-black">
   <header class="fixed right-8 top-1/2 -translate-y-1/2 z-1 max-lg:hidden">
     <nav class="bg-dark-1/50 backdrop-blur-0.5xs rounded-full shadow-aside-social p-2">
-      <ul class="flex flex-col gap-2">
+      <ul class="flex flex-col gap-2 relative before:bg-white before:w-full before:aspect-square before:absolute before:rounded-full before:top-[var(--top)] before:transition-[top] duration-500 header-link-list">
         <li>
-          <a class="p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 scroll-link"
+          <a class="relative p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 header-link scroll-link [.active]:text-dark-1 active"
             href="#home" aria-label="Home" title="Home">
             <iconify-icon icon="line-md:home" width="20" height="20"></iconify-icon>
           </a>
         </li>
         <li>
-          <a class="p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 scroll-link"
+          <a class="relative p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 header-link scroll-link [.active]:text-dark-1"
             href="#about" aria-label="about" title="About">
             <iconify-icon icon="icon-park-outline:user" width="20" height="20"></iconify-icon>
           </a>
         </li>
         <li>
-          <a class="p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 scroll-link"
+          <a class="relative p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 header-link scroll-link [.active]:text-dark-1"
             href="#resume" aria-label="resume" title="Resume">
             <iconify-icon icon="qlementine-icons:resume-16" width="20" height="20"></iconify-icon>
           </a>
         </li>
         <li>
-          <a class="p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 scroll-link"
+          <a class="relative p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 header-link scroll-link [.active]:text-dark-1"
             href="#skills" aria-label="skills" title="Skills">
             <iconify-icon icon="et:tools" width="20" height="20"></iconify-icon>
           </a>
         </li>
         <li>
-          <a class="p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 scroll-link"
+          <a class="relative p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 header-link scroll-link [.active]:text-dark-1"
             href="#portfolio" aria-label="portfolio" title="Portfolio">
             <iconify-icon icon="dashicons:portfolio" width="20" height="20"></iconify-icon>
           </a>
         </li>
         <li>
-          <a class="p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 scroll-link"
+          <a class="relative p-3 rounded-full leading-0 block hover:bg-white/10 transition-colors duration-500 header-link scroll-link [.active]:text-dark-1"
             href="#contact" aria-label="contact" title="Contact">
             <iconify-icon icon="ph:handshake" width="20" height="20"></iconify-icon>
           </a>

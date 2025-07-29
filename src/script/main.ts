@@ -61,6 +61,19 @@ mobileMenu.firstElementChild?.on("click", function (e) {
     e.stopPropagation();
 });
 
-mobileMenu.$("#mobile-menu-close-btn")?.on("click",function(){
+mobileMenu.$("#mobile-menu-close-btn")?.on("click", function () {
     mobileMenu.click();
 });
+
+const headerLinkList = $(".header-link-list") as HTMLUListElement;
+
+if (headerLinkList) {
+    const headerLinks = headerLinkList.$$(".header-link");
+    headerLinks.forEach((link) => {
+        link.on("click", function () {
+            headerLinkList.style.setProperty("--top", `${(link as HTMLAnchorElement).offsetTop}px`);
+            headerLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+        })
+    })
+}
