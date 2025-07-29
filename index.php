@@ -18,6 +18,10 @@ $dotenv->load();
   <meta name="description" content="Portfolio of Ayush Bajracharya, a frontend developer." />
   <title>Ayush Bajracharya | Portfolio</title>
 
+  <!-- preload images -->
+  <link rel="preload" href="/assets/images/profile.png" as="image" type="image/png" crossorigin="anonymous" />
+  <!-- preload images -->
+
   <!-- preload fonts -->
   <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff" as="font" type="font/woff" crossorigin="anonymous" />
   <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -30,7 +34,7 @@ $dotenv->load();
   <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff" as="font" type="font/woff" crossorigin="anonymous" />
   <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   <!-- preload fonts -->
-
+  
   <?php if ($_ENV['APP_ENV'] == 'local'): ?>
     <link rel="stylesheet" href="http://localhost:5173/src/css/style.css" />
     <script type="module" src="http://localhost:5173/src/script/main.ts" defer></script>
