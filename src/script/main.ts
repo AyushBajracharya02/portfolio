@@ -2,13 +2,7 @@ import "iconify-icon";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-Element.prototype.$ = Element.prototype.querySelector;
-Element.prototype.$$ = Element.prototype.querySelectorAll;
-EventTarget.prototype.on = EventTarget.prototype.addEventListener;
-EventTarget.prototype.off = EventTarget.prototype.removeEventListener;
+import { $, $$ } from "./helpers/DOM-helpers";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -20,26 +14,37 @@ let smoother = ScrollSmoother.create({
 
 const minWidth1280px = window.matchMedia("(width >= 1280px)");
 
+let asideScrollTrigger = ScrollTrigger.create({
+    trigger: "#aside",
+    endTrigger: "#smooth-content",
+    start: "top top",
+    end: "bottom bottom",
+    pin: true,
+});
+
 if (minWidth1280px.matches) {
-    ScrollTrigger.create({
-        trigger: "#aside",
-        endTrigger: "#smooth-content",
-        start: "top top",
-        end: "bottom bottom",
-        pin: true,
-    });
+    asideScrollTrigger.enable();
+} else {
+    asideScrollTrigger.disable();
 }
 
-// window.on("resize", function () { 
-
-// })
-
+minWidth1280px.on("change", () => {
+    if (minWidth1280px.matches) {
+        asideScrollTrigger.enable();
+    } else {
+        asideScrollTrigger.disable();
+    }
+});
 
 $$(".scroll-link").forEach((link) => {
     link.addEventListener("click", function (e) {
         e.preventDefault();
         const target = link.getAttribute("href");
+        ScrollTrigger.getAll().forEach(t => t.disable());
         smoother.scrollTo(target, true, "top top");
+        setTimeout(() => {
+            ScrollTrigger.getAll().forEach(t => t.enable());
+        }, 1000);
     });
 });
 
@@ -68,12 +73,28 @@ mobileMenu.$("#mobile-menu-close-btn")?.on("click", function () {
 const headerLinkList = $(".header-link-list") as HTMLUListElement;
 
 if (headerLinkList) {
-    const headerLinks = headerLinkList.$$(".header-link");
+    const headerLinks = headerLinkList.$$(".header-link") as NodeListOf<HTMLAnchorElement>;
+    function setActiveHeaderLink(link: HTMLAnchorElement) {
+        headerLinkList.style.setProperty("--top", `${link.offsetTop}px`);
+        headerLinks.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+    }
     headerLinks.forEach((link) => {
         link.on("click", function () {
-            headerLinkList.style.setProperty("--top", `${(link as HTMLAnchorElement).offsetTop}px`);
-            headerLinks.forEach((l) => l.classList.remove("active"));
-            link.classList.add("active");
-        })
-    })
+            setActiveHeaderLink(link);
+        });
+        if (minWidth1280px.matches) {
+            const href = link.getAttribute("href");
+            ScrollTrigger.create({
+                trigger: href,
+                start: "top top",
+                onEnter: () => {
+                    setActiveHeaderLink(link);
+                },
+                onEnterBack: () => {
+                    setActiveHeaderLink(link);
+                }
+            });
+        }
+    });
 }
