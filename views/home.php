@@ -13,7 +13,7 @@
     <!-- preload images -->
 
     <!-- preload fonts -->
-    <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff" as="font" type="font/woff" crossorigin="anonymous" />
+    <!-- <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff" as="font" type="font/woff" crossorigin="anonymous" />
     <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Light.woff" as="font" type="font/woff" crossorigin="anonymous" />
     <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -22,7 +22,7 @@
     <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Regular.woff" as="font" type="font/woff" crossorigin="anonymous" />
     <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff" as="font" type="font/woff" crossorigin="anonymous" />
-    <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/assets/fonts/rajdhani/Rajdhani-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" /> -->
     <!-- preload fonts -->
 
     <?php if ($_ENV['APP_ENV'] == 'local'): ?>

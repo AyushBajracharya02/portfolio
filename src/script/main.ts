@@ -7,94 +7,101 @@ import { $, $$ } from "./helpers/DOM-helpers";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 let smoother = ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 1.5,
+   wrapper: "#smooth-wrapper",
+   content: "#smooth-content",
+   smooth: 1.5,
 });
 
 const minWidth1280px = window.matchMedia("(width >= 1280px)");
 
 let asideScrollTrigger = ScrollTrigger.create({
-    trigger: "#aside",
-    endTrigger: "#smooth-content",
-    start: "top top",
-    end: "bottom bottom",
-    pin: true,
+   trigger: "#aside",
+   endTrigger: "#smooth-content",
+   start: "top top",
+   end: "bottom bottom",
+   pin: true,
 });
 
 if (minWidth1280px.matches) {
-    asideScrollTrigger.enable();
+   asideScrollTrigger.enable();
 } else {
-    asideScrollTrigger.disable();
+   asideScrollTrigger.disable();
 }
 
 minWidth1280px.on("change", () => {
-    if (minWidth1280px.matches) {
-        asideScrollTrigger.enable();
-    } else {
-        asideScrollTrigger.disable();
-    }
+   if (minWidth1280px.matches) {
+      asideScrollTrigger.enable();
+   } else {
+      asideScrollTrigger.disable();
+   }
 });
 
+const headerLinkList = $(".header-link-list") as HTMLUListElement;
+
+const headerLinks = headerLinkList.$$(
+   ".header-link"
+) as NodeListOf<HTMLAnchorElement>;
+
+function setActiveHeaderLink(link: HTMLAnchorElement) {
+   headerLinkList.style.setProperty("--top", `${link.offsetTop}px`);
+   headerLinks.forEach((l) => l.classList.remove("active"));
+   link.classList.add("active");
+}
+
+headerLinks.forEach((link) => {
+   link.on("click", function () {
+      setActiveHeaderLink(link);
+   });
+});
+
+let headerLinkScrollTriggers: ScrollTrigger[] = [];
+
+if (minWidth1280px.matches) {
+   headerLinkScrollTriggers = [...headerLinks].map((link) => {
+      const href = link.getAttribute("href");
+      return ScrollTrigger.create({
+         trigger: href,
+         start: "top top",
+         onEnter: () => {
+            setActiveHeaderLink(link);
+         },
+         onEnterBack: () => {
+            setActiveHeaderLink(link);
+         },
+      });
+   });
+}
+
 $$(".scroll-link").forEach((link) => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = link.getAttribute("href");
-        ScrollTrigger.getAll().forEach(t => t.disable());
-        smoother.scrollTo(target, true, "top top");
-        setTimeout(() => {
-            ScrollTrigger.getAll().forEach(t => t.enable());
-        }, 1000);
-    });
+   link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = link.getAttribute("href");
+      headerLinkScrollTriggers.forEach((t) => t.disable());
+      smoother.scrollTo(target, true, "top top");
+      setTimeout(() => {
+          ScrollTrigger.getAll().forEach(t => t.enable());
+      }, 2500);
+   });
 });
 
 const mobileMenu = $("#mobile-menu") as HTMLDialogElement;
 
 $("#mobile-menu-btn")?.on("click", function () {
-    mobileMenu.showModal();
+   mobileMenu.showModal();
 });
 
 mobileMenu.on("click", function () {
-    mobileMenu.classList.add("closing");
-    setTimeout(() => {
-        mobileMenu.classList.remove("closing");
-        mobileMenu.close();
-    }, 500);
+   mobileMenu.classList.add("closing");
+   setTimeout(() => {
+      mobileMenu.classList.remove("closing");
+      mobileMenu.close();
+   }, 500);
 });
 
 mobileMenu.firstElementChild?.on("click", function (e) {
-    e.stopPropagation();
+   e.stopPropagation();
 });
 
 mobileMenu.$("#mobile-menu-close-btn")?.on("click", function () {
-    mobileMenu.click();
+   mobileMenu.click();
 });
-
-const headerLinkList = $(".header-link-list") as HTMLUListElement;
-
-if (headerLinkList) {
-    const headerLinks = headerLinkList.$$(".header-link") as NodeListOf<HTMLAnchorElement>;
-    function setActiveHeaderLink(link: HTMLAnchorElement) {
-        headerLinkList.style.setProperty("--top", `${link.offsetTop}px`);
-        headerLinks.forEach((l) => l.classList.remove("active"));
-        link.classList.add("active");
-    }
-    headerLinks.forEach((link) => {
-        link.on("click", function () {
-            setActiveHeaderLink(link);
-        });
-        if (minWidth1280px.matches) {
-            const href = link.getAttribute("href");
-            ScrollTrigger.create({
-                trigger: href,
-                start: "top top",
-                onEnter: () => {
-                    setActiveHeaderLink(link);
-                },
-                onEnterBack: () => {
-                    setActiveHeaderLink(link);
-                }
-            });
-        }
-    });
-}
